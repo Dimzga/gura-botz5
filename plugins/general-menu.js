@@ -44,7 +44,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     let txt = await res.text()
     let arr = txt.split('\n')
     let cita = arr[Math.floor(Math.random() * arr.length)]
-    let thumb = await(await fetch(cita)).buffer()
+    let thumb = 'https://a.uguu.se/jfRNcJTN.jpg'
       let vn = './media/tante-tante.mp3'
     let uptime = clockString(_uptime)
     let help = Object.values(global.plugins).filter(plugin => !plugin.disabled).map(plugin => {
@@ -104,7 +104,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     description: "https://Instagram.com/bot_whangsaf", 
     title: 'Simple Bot Esm',
     body: wm,
-    thumbnail: 'https://a.uguu.se/jfRNcJTN.jpg',
+    thumbnail: thumb,
     sourceUrl: sgc
 }
 } })
