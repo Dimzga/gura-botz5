@@ -1,13 +1,31 @@
-let handler = async (m, { conn }) => {
+let PhoneNumber = require('awesome-phonenumber')
   let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
-  conn.sendFile(m.chat, global.API('https://some-random-api.ml', '/canvas/gay', {
-    avatar: await conn.profilePictureUrl(who, 'image').catch(_ => 'https://telegra.ph/file/24fa902ead26340f3df2c.png'),
-  }), 'gay.png', 'siapa disini yang cita citanya menjadi gay dan memperkosa gw gays?', m)
-}
+  try {
+    pp = await conn.profilePictureUrl(who, 'image')
+  } catch (e) {
+let pp = './src/avatar_contact.png'
+  } finally {
+    let { name, premium, level, limit, exp, lastclaim, registered, regTime, age } = global.DATABASE.data.users[m.sender]
+    let username = conn.getName(who)
+    let str = `
 
-handler.help = ['gay']
-handler.tags = ['maker']
+✧──────────[ *PROFILE* ]──────────✧
+📇 • *Name:* ${username} ${registered ? '(' + name + ') ': ''}
+📧 • *Tag:* @${who.replace(/@.+/, '')}
+📞 • *Number:* ${PhoneNumber('+' + who.replace('@s.whatsapp.net', '')).getNumber('international')}
+💻 • *Link:* https://wa.me/${who.split`@`[0]}
+${registered ? '🎨 • *Age:* ' + age : ''}
 
-handler.command = /^(gay)$/i
+🌟 • *Premium:* ${premium ? "✅" :"❌"}
+📑 • *Registered:* ${registered ? '✅': '❌'}
+⛔ • *Banned:* ❌
 
+`.trim()
+    let mentionedJid = [who]
+    conn.sendFile(m.chat, pp, 'pp.jpg', str, m, false, { contextInfo: { mentionedJid }})
+  }
+
+handler.help = ['profile [@user]']
+handler.tags = ['tools']
+handler.command = /^profile|pp$/i
 module.exports = handler
