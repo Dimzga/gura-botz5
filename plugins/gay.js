@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 let handler = async (m, { conn }) => {  
   let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender 
   conn.sendFile(m.chat, global.API('https://some-random-api.ml', '/canvas/gay', {
@@ -12,9 +11,9 @@ let handler = async (m, { conn }) => {
   }), 'gay.png', 'siapa disini yang cita citanya menjadi gay dan memperkosa gw ?', m)
 >>>>>>> e3c57e2541ea7974b41e7f0547b9e320d988a77d
 
-handler.help = ['gay']
+handler.help = ['gay1']
 handler.tags = ['maker']
 
-handler.command = /^(gay)$/i
+handler.command = /^(gay1)$/i
 
 module.exports = handler
