@@ -44,7 +44,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     let txt = await res.text()
     let arr = txt.split('\n')
     let cita = arr[Math.floor(Math.random() * arr.length)]
-    let thumb = 'https://a.uguu.se/jfRNcJTN.jpg'
+    let thumb = await(await fetch(cita)).buffer()
       let vn = './media/tante-tante.mp3'
     let uptime = clockString(_uptime)
     let help = Object.values(global.plugins).filter(plugin => !plugin.disabled).map(plugin => {
