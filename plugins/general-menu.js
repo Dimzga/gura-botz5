@@ -104,7 +104,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     description: "https://Instagram.com/bot_whangsaf", 
     title: 'Simple Bot Esm',
     body: wm,
-    thumbnail: thumb,
+    thumbnail: 'https://a.uguu.se/jfRNcJTN.jpg',
     sourceUrl: sgc
 }
 } })
